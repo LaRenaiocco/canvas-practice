@@ -4,11 +4,13 @@ import backdrop from  "./assets/bluewall.jpg"
 // let coordinates = {x: Number, y: Number}
 
 function Canvas(props) {
-
+  // State for tracking if the app should be painting or not.
   const [painting, setPainting] = useState(false)
+  // state for tracking x and y position of mouse at various times {x: num, y: num}
   const [mousePosition, setmousePosition] = useState(undefined)
-
+  // ref hook to track current state of canvas element
   const canvasRef = useRef(null);
+  // backdrop for canvas
   const backdropImg = new Image()
   backdropImg.src = backdrop
 
@@ -24,35 +26,24 @@ useEffect(() => {
     })
   }, [])
 
-
+  // activates paint method on mouse down event
   const startPaint = useCallback(evt => {
     const coordinates = getCoords(evt)
     if (coordinates) {
       setmousePosition(coordinates)
       setPainting(true)
-      console.log('startPaint function called')
     }
   }, [])
-
+//  To use callbacks or not to use callbacks?? That is the question...
   // function startPaint(evt) {
   //   const coordinates = getCoords(evt)
   //   if (coordinates) {
   //     setmousePosition(coordinates)
   //     setPainting(true)
-  //     console.log('startPaint function called')
   //   }
   // }
 
-  // useEffect(() => {
-  //   if (!canvasRef.current) return;
-
-  //   const canvas = canvasRef.current;
-  //   // canvas.addEventListener('mousedown', startPaint);
-  //   // return() => {
-  //   //   canvas.removeEventListener('mousedown', startPaint);
-  //   // };
-  // }, [startPaint]);
-
+  // tracks mouse positions on mouse move event for painting
   const paint = useCallback(evt => {
     if(painting) {
       const newMousePosition = getCoords(evt);
@@ -63,61 +54,34 @@ useEffect(() => {
     }
   }, [painting, mousePosition])
 
-  // useEffect(() => {
-  //   if (!canvasRef.current) return;
-  //   const canvas = canvasRef.current;
-  //   canvas.addEventListener('mousemove', paint);
-  //   return () => {
-  //     canvas.removeEventListener('mousemove', paint)
-  //   };
-  // }, [paint])
-
+  // deactivates painting state on mouse up event
   const endPaint = useCallback(evt => {
     setPainting(false);
     setmousePosition(undefined);
   }, []);
 
-// THIS ONE WORKS TOO!!  CALLBACK VS REGULAR FUNCTION
-  // function endPaint() {
-  //   setPainting(false)
-  //   setmousePosition(undefined)
-  // }
-
-  // useEffect(() => {
-  //   if (!canvasRef.current) return;
-  //   const canvas = canvasRef.current;
-  //   canvas.addEventListener('mouseup', endPaint);
-  //   canvas.addEventListener('mouseleave', endPaint);
-  //   return () => {
-  //     canvas.removeEventListener('mouseup', endPaint);
-  //     canvas.removeEventListener('mouseleave', endPaint);
-  //   };
-  // }, [endPaint]);
-
+  // gets coordinates of mouse position
   function getCoords(evt) {
     const canvas = canvasRef.current
     // probably need to calculate some offset here and use canvas
     return {x: evt.clientX, y: evt.clientY}
   }
 
+  // takes in mouse positions and draws lines
   function draw(mousePosition, newMousePosition) {
     if (!canvasRef.current) return;
     const canvas = canvasRef.current
     const ctx = canvas.getContext('2d');
-    // ctx.drawImage(backdropImg, 0, 0, backdropImg.width, backdropImg.height, 
-    //                           0, 0, canvas.width, canvas.height)
 
-    // const ctx = context
     ctx.lineWidth = 10
     ctx.lineCap = 'round'
-
     ctx.beginPath()
     ctx.moveTo(mousePosition.x, mousePosition.y)
     ctx.lineTo(newMousePosition.x, newMousePosition.y)
     ctx.closePath()
-
     ctx.stroke()
   }
+  
   return (
     <React.Fragment>
       <div >
