@@ -17,14 +17,14 @@ function Canvas(props) {
 // Loads canvas with background image added to context and does not run again
 // Image is set to canvas height and width
 useEffect(() => {
-    if (!canvasRef.current) return;
+    // if (!canvasRef.current) return;
     const canvas = canvasRef.current
     const ctx = canvas.getContext('2d');
     backdropImg.onload = (() => {
       ctx.drawImage(backdropImg, 0, 0, backdropImg.width, backdropImg.height, 
                   0, 0, canvas.width, canvas.height);
     })
-  }, [])
+  }, [props.height, props.width])
 
   // activates paint method on mouse down event
   const startPaint = useCallback(evt => {
@@ -81,7 +81,7 @@ useEffect(() => {
     ctx.closePath()
     ctx.stroke()
   }
-  
+
   return (
     <React.Fragment>
       <div >
