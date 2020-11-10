@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import backdrop from  "./assets/bluewall.jpg"
 
 // let coordinates = {x: Number, y: Number}
 
@@ -8,29 +9,49 @@ function Canvas(props) {
   const [mousePosition, setmousePosition] = useState(undefined)
 
   const canvasRef = useRef(null);
+  const backdropImg = new Image()
+  backdropImg.src = backdrop
+
+// Loads canvas with background image added to context and does not run again
+// Image is set to canvas height and width
+useEffect(() => {
+    if (!canvasRef.current) return;
+    const canvas = canvasRef.current
+    const ctx = canvas.getContext('2d');
+    backdropImg.onload = (() => {
+      ctx.drawImage(backdropImg, 0, 0, backdropImg.width, backdropImg.height, 
+                  0, 0, canvas.width, canvas.height);
+    })
+  }, [])
+
 
   const startPaint = useCallback(evt => {
     const coordinates = getCoords(evt)
     if (coordinates) {
       setmousePosition(coordinates)
       setPainting(true)
+      console.log('startPaint function called')
     }
   }, [])
 
-  useEffect(() => {
-    if (!canvasRef.current) return;
+  // function startPaint(evt) {
+  //   const coordinates = getCoords(evt)
+  //   if (coordinates) {
+  //     setmousePosition(coordinates)
+  //     setPainting(true)
+  //     console.log('startPaint function called')
+  //   }
+  // }
 
-    const canvas = canvasRef.current;
-    canvas.addEventListener('mousedown', startPaint);
-    return() => {
-      canvas.removeEventListener('mousedown', startPaint);
-    };
-    // const ctx = canvas.getContext('2d')
-    
-    // ctx.fillRect(25, 25, 100, 100);
-    // ctx.clearRect(45, 45, 60, 60);
-    // ctx.strokeRect(50, 50, 50, 50);
-  }, [startPaint]);
+  // useEffect(() => {
+  //   if (!canvasRef.current) return;
+
+  //   const canvas = canvasRef.current;
+  //   // canvas.addEventListener('mousedown', startPaint);
+  //   // return() => {
+  //   //   canvas.removeEventListener('mousedown', startPaint);
+  //   // };
+  // }, [startPaint]);
 
   const paint = useCallback(evt => {
     if(painting) {
@@ -42,30 +63,36 @@ function Canvas(props) {
     }
   }, [painting, mousePosition])
 
-  useEffect(() => {
-    if (!canvasRef.current) return;
-    const canvas = canvasRef.current;
-    canvas.addEventListener('mousemove', paint);
-    return () => {
-      canvas.removeEventListener('mousemove', paint)
-    };
-  }, [paint])
+  // useEffect(() => {
+  //   if (!canvasRef.current) return;
+  //   const canvas = canvasRef.current;
+  //   canvas.addEventListener('mousemove', paint);
+  //   return () => {
+  //     canvas.removeEventListener('mousemove', paint)
+  //   };
+  // }, [paint])
 
   const endPaint = useCallback(evt => {
     setPainting(false);
     setmousePosition(undefined);
   }, []);
 
-  useEffect(() => {
-    if (!canvasRef.current) return;
-    const canvas = canvasRef.current;
-    canvas.addEventListener('mouseup', endPaint);
-    canvas.addEventListener('mouseleave', endPaint);
-    return () => {
-      canvas.removeEventListener('mouseup', endPaint);
-      canvas.removeEventListener('mouseleave', endPaint);
-    };
-  }, [endPaint]);
+// THIS ONE WORKS TOO!!  CALLBACK VS REGULAR FUNCTION
+  // function endPaint() {
+  //   setPainting(false)
+  //   setmousePosition(undefined)
+  // }
+
+  // useEffect(() => {
+  //   if (!canvasRef.current) return;
+  //   const canvas = canvasRef.current;
+  //   canvas.addEventListener('mouseup', endPaint);
+  //   canvas.addEventListener('mouseleave', endPaint);
+  //   return () => {
+  //     canvas.removeEventListener('mouseup', endPaint);
+  //     canvas.removeEventListener('mouseleave', endPaint);
+  //   };
+  // }, [endPaint]);
 
   function getCoords(evt) {
     const canvas = canvasRef.current
@@ -77,6 +104,10 @@ function Canvas(props) {
     if (!canvasRef.current) return;
     const canvas = canvasRef.current
     const ctx = canvas.getContext('2d');
+    // ctx.drawImage(backdropImg, 0, 0, backdropImg.width, backdropImg.height, 
+    //                           0, 0, canvas.width, canvas.height)
+
+    // const ctx = context
     ctx.lineWidth = 10
     ctx.lineCap = 'round'
 
@@ -89,14 +120,15 @@ function Canvas(props) {
   }
   return (
     <React.Fragment>
-      <div id="backdrop" height={props.height} width={props.width}>
+      <div >
         <canvas 
           ref={canvasRef} 
           height={props.height} 
           width={props.width}
-          // onMouseDown={startPosition}
-          // onMouseUp={stopPosition}
-          // onMouseMove={paint}
+          onMouseDown={startPaint}
+          onMouseUp={endPaint}
+          onMouseLeave={endPaint}
+          onMouseMove={paint}
         >
         </canvas>
       </div>
@@ -104,90 +136,3 @@ function Canvas(props) {
   )
 }
 export default Canvas
-
-// const LINEWIDTH = 10
-
-
-// function Canvas(props) {
-
-//   const [painting, setPainting] = useState(false)
-//   const [ctx, setCtx] = useState(null)
-//   const [mouseDown, setMouseDown] = useState({x: 0, y: 0})
-  
-
-//   const canvasRef = useRef(null);
-//   const backdrop = new Image()
-//   backdrop.src = "../../bluewall.jpg"
-
-
-
-//   function draw(e) {
-//     // backdrop.onload = (() => {
-//     //   ctx.drawImage(backdrop, 0, 0, backdrop.width, backdrop.height, 
-//     //                 0, 0, canvas.width, canvas.height)
-//     if (!painting) return;  
-//       ctx.lineWidth = 10;
-//       ctx.lineCap = 'round';
-
-//       ctx.lineTo(mouseDown.x, mouseDown.y);
-//       ctx.stroke();
-//       ctx.beginPath();
-//       ctx.moveTo(mouseDown.x, mouseDown.y)
-//     // })
-//   }
-
-
-//       function startPosition() {
-//       setPainting(true)
-//       console.log('TRUE')
-//     }
-  
-//     function stopPosition() {
-//       setPainting(false)
-//       console.log('FALSE')
-//     }
-
-//     function paint(e, ctx) {
-//       if (!painting) return;
-//       console.log('MOUSE IS MOVING')
-//       setMouseDown({x: e.clientX, y: e.clientY})
-//       ctx.lineWidth = 10;
-//       ctx.lineCap = 'round';
-
-//       ctx.lineTo(mouseDown.x, mouseDown.y);
-//       ctx.stroke();
-//       ctx.beginPath();
-//       ctx.moveTo(mouseDown.x, mouseDown.y)
-
-//     }
-
-//   useEffect(() => {
-//     const canvas = canvasRef.current;
-//     let ctx = canvas.getContext('2d')
-//     paint(ctx)
-
-
-//   }, [mouseDown])
-
-//   return (
-//     <React.Fragment>
-//     <div 
-//       height={props.height} 
-//       width={props.width}
-//       // styles={{ backgroundImage: `url(${backdrop})`}}
-//     >
-//       <canvas 
-//         ref={canvasRef} 
-//         height={props.height} 
-//         width={props.width}
-//         onMouseDown={startPosition}
-//         onMouseUp={stopPosition}
-//         onMouseMove={paint}
-//       >
-//       </canvas>
-//     </div>
-//     </React.Fragment>
-//     )
-// }
-
-// export default Canvas

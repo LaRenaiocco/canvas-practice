@@ -1,0 +1,13 @@
+/* #backdrop {
+    background-image: url("../../bluewall.jpg");
+} */
+
+#backdrop {
+    /* height: 100vh;
+    background-size: cover; */
+    height: max-content;
+    width: max-content;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 100%;
+}

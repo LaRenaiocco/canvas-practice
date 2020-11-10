@@ -15,11 +15,11 @@ function App() {
   }
   return (
     <div>
-      <CanvasSize canvasSize={canvasSize} />
       <Canvas 
         height={size.height}
         width={size.width}
       />
+      <CanvasSize canvasSize={canvasSize} />
     </div>
   );
 }
