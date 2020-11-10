@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Canvas from './components/Canvas'
+import CanvasSize from './components/CanvasSize'
+
+const HEIGHT = 500
+const WIDTH = 500
 
 function App() {
+
+  const [size, setSize] = useState({height: 500, width: 500})
+
+  function canvasSize(newHeight, newWidth) {
+    const newSize = {height: newHeight, width: newWidth}
+    setSize(newSize)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <CanvasSize canvasSize={canvasSize} />
+      <Canvas 
+        height={size.height}
+        width={size.width}
+      />
     </div>
   );
 }
