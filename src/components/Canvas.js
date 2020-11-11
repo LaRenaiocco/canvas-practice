@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import ClearCanvas from './ClearCanvas';
+import SaveImage from './SaveImage';
 import backdrop from  "./assets/bluewall.jpg"
 
 // let coordinates = {x: Number, y: Number}
@@ -10,7 +11,7 @@ function Canvas(props) {
   // state for tracking x and y position of mouse at various times {x: num, y: num}
   const [mousePosition, setmousePosition] = useState(undefined)
 
-  const [clearCanvas, setClearCanvas] = useState(undefined)
+  // const [clearCanvas, setClearCanvas] = useState(undefined)
 
   // ref hook to track current state of canvas element
   const canvasRef = useRef(null);
@@ -36,6 +37,7 @@ useEffect(() => {
     if (coordinates) {
       setmousePosition(coordinates)
       setPainting(true)
+      paint()
     }
   }, [])
 //  To use callbacks or not to use callbacks?? That is the question...
@@ -77,7 +79,7 @@ useEffect(() => {
     const canvas = canvasRef.current
     const ctx = canvas.getContext('2d');
 
-    ctx.lineWidth = props.brushSize
+    ctx.lineWidth = props.brush
     ctx.lineCap = 'round'
     ctx.strokeStyle = props.paintColor
     ctx.beginPath()
@@ -87,9 +89,10 @@ useEffect(() => {
     ctx.stroke()
   }
 
-  function clear(string) {
-    const activateClear = string
-    setClearCanvas(activateClear)
+  // Reset canvas/erase all user work
+  function clear() {
+    // const activateClear = string
+    // setClearCanvas(activateClear)
     if (ClearCanvas) {
       const canvas = canvasRef.current
       const ctx = canvas.getContext('2d');
@@ -97,18 +100,29 @@ useEffect(() => {
       ctx.drawImage(backdropImg, 0, 0, backdropImg.width, backdropImg.height, 
         0, 0, canvas.width, canvas.height);
     }
-    setClearCanvas(undefined)
+    // setClearCanvas(undefined)
   }
 
-  // function clearCanvas() {
-  //   if (props.clear === true) {
-  //     const canvas = canvasRef.current
-  //     const ctx = canvas.getContext('2d');
-  //     ctx.clearRect(0, 0, canvas.width, canvas.height)
-  //   }
+  // saves image to a Data URL to download
+  function imageSave() {
+    console.log('image save triggered')
+    const canvas = canvasRef.current
+    const imageURL = canvas.toDataURL()
+    const filename = "my_graffiti"
+    download(imageURL, filename)
+  }
 
-
-  // }
+  // downloads image file to users computer downloads file
+  function download(imageURL, filename) {
+    const download = document.createElement('a')
+    download.href = imageURL
+    download.target = '_blank';
+    download.download = filename;
+    const evt = document.createEvent('MouseEvents');
+    evt.initMouseEvent('click', true, true, window, 1, 0, 0, 0, 0,
+                      false, false, false, false, 0, null);
+    download.dispatchEvent(evt);
+  }
 
 
   return (
@@ -126,6 +140,7 @@ useEffect(() => {
         </canvas>
       </div>
       <ClearCanvas clear={clear} />
+      <SaveImage imageSave={imageSave}/>
     </React.Fragment>
   )
 }

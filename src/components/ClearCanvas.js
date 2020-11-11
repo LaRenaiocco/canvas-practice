@@ -3,7 +3,7 @@ import React from 'react';
 function ClearCanvas(props) {
 
 	function eraseCanvas() {
-		props.clear('clear')
+		props.clear()
 	}
 
 	return (

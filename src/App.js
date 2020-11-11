@@ -14,6 +14,7 @@ function App() {
   const [size, setSize] = useState({height: 200, width: 200})
   const [paintColor, setPaintColor] = useState('black')
   const [brush, setBrush] = useState(10)
+  const [triggerSave, setTriggerSave] = useState(false)
 
 
   function canvasSize(newHeight, newWidth) {
@@ -29,11 +30,15 @@ function App() {
     setBrush(size)
   }
 
+
+
   // function clear(bool) {
   //   const activateClear = bool
   //   setClearCanvas(activateClear)
   //   console.log(clearCanvas)
   // }
+
+  
 
   return (
     <div>
@@ -41,15 +46,16 @@ function App() {
         height={size.height}
         width={size.width}
         paintColor={paintColor}
-        brushSize={brushSize}
+        brush={brush}
       />
       <CanvasSize canvasSize={canvasSize} />
-      <SaveImage />
       <ColorButton name='red' changeColor={changeColor} />
       <ColorButton name='blue' changeColor={changeColor}/>
       <ColorButton name='green' changeColor={changeColor}/>
       {/* <ClearCanvas clear={clear} /> */}
-      <PaintSizer />
+      <PaintSizer name='small' brushSize={brushSize} />
+      <PaintSizer name='medium' brushSize={brushSize} />
+      <PaintSizer name='large' brushSize={brushSize} />
 
     </div>
   );

@@ -14,7 +14,6 @@ function CanvasSize(props) {
   
   function handleSubmit(e) {
     e.preventDefault()
-    console.log('Submit prevented')
     props.canvasSize(height, width)
     setHeight('')
     setWidth('')
