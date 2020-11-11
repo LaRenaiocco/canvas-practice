@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import Canvas from './components/Canvas';
 import CanvasSize from './components/CanvasSize';
 import SaveImage from './components/SaveImage';
-import Colors from './components/Colors';
+import ColorButton from './components/ColorButton';
+import ClearCanvas from './components/ClearCanvas';
+import PaintSizer from './components/PaintSizer';
 
-const HEIGHT = 500
-const WIDTH = 500
+
+// const COLORS
 
 function App() {
 
@@ -23,9 +25,11 @@ function App() {
       />
       <CanvasSize canvasSize={canvasSize} />
       <SaveImage />
-      <Colors />
-      <Colors />
-      <Colors />
+      <ColorButton />
+      <ColorButton />
+      <ColorButton />
+      <ClearCanvas />
+      <PaintSizer />
 
     </div>
   );
