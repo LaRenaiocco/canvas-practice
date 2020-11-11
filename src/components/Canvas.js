@@ -11,6 +11,7 @@ function Canvas(props) {
   const [mousePosition, setmousePosition] = useState(undefined)
 
   const [clearCanvas, setClearCanvas] = useState(undefined)
+
   // ref hook to track current state of canvas element
   const canvasRef = useRef(null);
   // backdrop for canvas
@@ -76,8 +77,9 @@ useEffect(() => {
     const canvas = canvasRef.current
     const ctx = canvas.getContext('2d');
 
-    ctx.lineWidth = 10
+    ctx.lineWidth = props.brushSize
     ctx.lineCap = 'round'
+    ctx.strokeStyle = props.paintColor
     ctx.beginPath()
     ctx.moveTo(mousePosition.x, mousePosition.y)
     ctx.lineTo(newMousePosition.x, newMousePosition.y)
@@ -107,6 +109,7 @@ useEffect(() => {
 
 
   // }
+
 
   return (
     <React.Fragment>

@@ -6,7 +6,6 @@ function CanvasSize(props) {
 
   function handleHeight(e) {
     setHeight(e.target.value)
-    console.log(height)
   }
 
   function handleWidth(e) {
