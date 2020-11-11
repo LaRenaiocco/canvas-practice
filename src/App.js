@@ -11,12 +11,20 @@ import PaintSizer from './components/PaintSizer';
 
 function App() {
 
-  const [size, setSize] = useState({height: 500, width: 500})
+  const [size, setSize] = useState({height: 200, width: 200})
+
 
   function canvasSize(newHeight, newWidth) {
     const newSize = {height: newHeight, width: newWidth}
     setSize(newSize)
   }
+
+  // function clear(bool) {
+  //   const activateClear = bool
+  //   setClearCanvas(activateClear)
+  //   console.log(clearCanvas)
+  // }
+
   return (
     <div>
       <Canvas 
@@ -28,7 +36,7 @@ function App() {
       <ColorButton />
       <ColorButton />
       <ColorButton />
-      <ClearCanvas />
+      {/* <ClearCanvas clear={clear} /> */}
       <PaintSizer />
 
     </div>

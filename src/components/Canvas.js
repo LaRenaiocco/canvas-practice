@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import ClearCanvas from './ClearCanvas';
 import backdrop from  "./assets/bluewall.jpg"
 
 // let coordinates = {x: Number, y: Number}
@@ -8,6 +9,8 @@ function Canvas(props) {
   const [painting, setPainting] = useState(false)
   // state for tracking x and y position of mouse at various times {x: num, y: num}
   const [mousePosition, setmousePosition] = useState(undefined)
+
+  const [clearCanvas, setClearCanvas] = useState(undefined)
   // ref hook to track current state of canvas element
   const canvasRef = useRef(null);
   // backdrop for canvas
@@ -82,6 +85,29 @@ useEffect(() => {
     ctx.stroke()
   }
 
+  function clear(string) {
+    const activateClear = string
+    setClearCanvas(activateClear)
+    if (ClearCanvas) {
+      const canvas = canvasRef.current
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(backdropImg, 0, 0, backdropImg.width, backdropImg.height, 
+        0, 0, canvas.width, canvas.height);
+    }
+    setClearCanvas(undefined)
+  }
+
+  // function clearCanvas() {
+  //   if (props.clear === true) {
+  //     const canvas = canvasRef.current
+  //     const ctx = canvas.getContext('2d');
+  //     ctx.clearRect(0, 0, canvas.width, canvas.height)
+  //   }
+
+
+  // }
+
   return (
     <React.Fragment>
       <div >
@@ -96,6 +122,7 @@ useEffect(() => {
         >
         </canvas>
       </div>
+      <ClearCanvas clear={clear} />
     </React.Fragment>
   )
 }

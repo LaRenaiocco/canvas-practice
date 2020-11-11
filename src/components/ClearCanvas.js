@@ -2,13 +2,12 @@ import React from 'react';
 
 function ClearCanvas(props) {
 
-	function clear() {
-		console.log('clear function called')
-		return
+	function eraseCanvas() {
+		props.clear('clear')
 	}
 
 	return (
-		<button onClick={clear}>Start Over</button>
+		<button onClick={eraseCanvas}>Start Over</button>
 	)
 }
 
