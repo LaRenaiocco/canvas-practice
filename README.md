@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+This Graffiti app was created for a MintBean Hackathon!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About the Developer
+Before attending Hackbright Academy, LaRena spent most of her adult life clowning around in the circus (yes, you read that right).  She studied Theatre in college and then honed her circus and clowning skills at the San Francisco Clown Conservatory.  LaRena spent 8 years touring full time in the US, Mexico and Japan with Ringling Bros. and Barnum & Bailey as well as Kinoshita Circus. Despite her passion for travel, being on the road 52 weeks a year can wear out even the most seasoned traveller.  Looking to live in one place and ready for the next step in her career, coupled with massive amounts of time in the current pandemic, LaRena discovered a love for software development and has enjoyed putting her previously unused math and logic skills to good use and learning to code.
 
-## Available Scripts
 
-In the project directory, you can run:
+<!-- ## Deployment -->
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Contents
+* [Tech Stack](#tech-stack)
+* [Features](#features)
+* [Future Features](#future)
+* [License](#license)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## <a name="tech-stack"></a>Technologies
+* JavaScript
+* React
+* CSS
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## <a name="features"></a>Features
 
-### `npm run build`
+On this simple graffiti app the user can:
+* Select from a variety of brick wall backgrounds
+* Resize their canvas
+* Select from a variety of colors and brush sizes
+* Trash their image
+* Save their image to their computer
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## <a name="future"></a>The Future of LaRena's Graffiti Wall
+I have lots of ideas for an additional sprint including:
+* add shading to the paint feature so that the longer you paint the darker the color gets.
+* Customized color picker
+* Better CSS styling!  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## <a name="license"></a>License
+The MIT License (MIT) Copyright (c) 2016 Agne Klimaite
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
