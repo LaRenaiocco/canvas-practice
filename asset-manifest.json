@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/canvas-practice/static/css/main.ad09c296.chunk.css",
+    "main.js": "/canvas-practice/static/js/main.ef2a7068.chunk.js",
+    "main.js.map": "/canvas-practice/static/js/main.ef2a7068.chunk.js.map",
+    "runtime-main.js": "/canvas-practice/static/js/runtime-main.c82770bc.js",
+    "runtime-main.js.map": "/canvas-practice/static/js/runtime-main.c82770bc.js.map",
+    "static/js/2.f0fd5003.chunk.js": "/canvas-practice/static/js/2.f0fd5003.chunk.js",
+    "static/js/2.f0fd5003.chunk.js.map": "/canvas-practice/static/js/2.f0fd5003.chunk.js.map",
+    "index.html": "/canvas-practice/index.html",
+    "static/css/main.ad09c296.chunk.css.map": "/canvas-practice/static/css/main.ad09c296.chunk.css.map",
+    "static/js/2.f0fd5003.chunk.js.LICENSE.txt": "/canvas-practice/static/js/2.f0fd5003.chunk.js.LICENSE.txt",
+    "static/media/bluewall.6bcb5651.jpg": "/canvas-practice/static/media/bluewall.6bcb5651.jpg",
+    "static/media/brickwall.1b8f98a9.jpg": "/canvas-practice/static/media/brickwall.1b8f98a9.jpg",
+    "static/media/darkwall.4ddd0957.jpg": "/canvas-practice/static/media/darkwall.4ddd0957.jpg",
+    "static/media/oldwall.595224d7.jpg": "/canvas-practice/static/media/oldwall.595224d7.jpg",
+    "static/media/pinkwall.a6ba5324.jpg": "/canvas-practice/static/media/pinkwall.a6ba5324.jpg",
+    "static/media/whitewashwall.79aa8ec3.jpg": "/canvas-practice/static/media/whitewashwall.79aa8ec3.jpg",
+    "static/media/yellowwall.5d879e4c.jpg": "/canvas-practice/static/media/yellowwall.5d879e4c.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c82770bc.js",
+    "static/js/2.f0fd5003.chunk.js",
+    "static/css/main.ad09c296.chunk.css",
+    "static/js/main.ef2a7068.chunk.js"
+  ]
+}
