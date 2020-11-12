@@ -1,4 +1,5 @@
 import React from 'react';
+import circle from  "./assets/circle.png"
 
 function PaintSizer(props) {
   
@@ -12,14 +13,15 @@ function PaintSizer(props) {
     }
   }
   return (
-    <button
-      type="button"
-      className="btn toggle-btn"
+    <img 
       id={props.name}
-      // aria-pressed={props.isPressed}
+      src={circle}
       onClick={brushSizer}
-    > {props.name}
-    </button>
+      height={props.height}
+      width={props.width}
+      className="brushsize"
+
+    />
     )
 }
 export default PaintSizer

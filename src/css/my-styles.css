@@ -1,14 +1,94 @@
+body {
+  font-family: 'Gochi Hand', cursive;
+  background-color: papayawhip;
+}
+
 canvas {
     cursor: url('/src/components/assets/spraycan.png'), auto;	
 }
 
-.btn {
-    height: 20px;
-    width: 50px;
+button {
+  font-family: 'Gochi Hand', cursive;
+  background-color: turquoise;
 }
+
+*:focus {
+  outline: 3px dashed #228bec;
+  outline-offset: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Create two unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+.left {
+  width: 75%;
+}
+
+.right {
+  width: 25%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#landingimage {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5000;
+}
+
+#landingtext {
+  padding: 20px 0 20px 0;
+  position: relative;
+  top: 200px;
+  left: 0px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 25px;
+  z-index: 6000;
+}
+
+.brushsize {
+  margin: 10px;
+  border: 2px solid black;
+  padding: 2px;
+  border-radius: 12px;
+}
+
+.btn {
+    height: 50px;
+    width: 50px;
+    border-radius: 12px;
+    border: 2px solid black;
+    margin: 2px
+}
+
 
 #red {
     background-color: red;
+}
+
+#orange {
+  background-color: orange;
+}
+
+#yellow {
+  background-color: yellow;
 }
 
 #green {
@@ -17,4 +97,73 @@ canvas {
 
 #blue {
     background-color: blue;
+}
+
+#purple {
+  background-color: purple;
+}
+
+#magenta {
+  background-color: magenta;
+}
+
+#black {
+  background-color: black;
+}
+
+#grey {
+  background-color: grey;
+}
+
+#white {
+  background-color: white;
+}
+
+#brown {
+  background-color: brown;
+}
+
+
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 300px;
+    background-color: lightcoral;
+    color: black;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+
+#paint {
+  display: none;
 }

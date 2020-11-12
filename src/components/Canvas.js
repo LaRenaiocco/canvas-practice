@@ -1,35 +1,37 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import ClearCanvas from './ClearCanvas';
 import SaveImage from './SaveImage';
-import backdrop from  "./assets/bluewall.jpg"
+import Backdrop from './Backdrop';
+import bluewall from  "./assets/bluewall.jpg"
+import brickwall from  "./assets/brickwall.jpg"
+import darkwall from  "./assets/darkwall.jpg"
+import oldwall from  "./assets/oldwall.jpg"
+import pinkwall from  "./assets/pinkwall.jpg"
+import whitewashwall from  "./assets/whitewashwall.jpg"
+import yellowwall from  "./assets/yellowwall.jpg"
 
-// let coordinates = {x: Number, y: Number}
 
 function Canvas(props) {
-  // State for tracking if the app should be painting or not.
+
   const [painting, setPainting] = useState(false)
-  // state for tracking x and y position of mouse at various times {x: num, y: num}
   const [mousePosition, setmousePosition] = useState(undefined)
+  const [wall, setWall] = useState(bluewall)
 
-  // const [clearCanvas, setClearCanvas] = useState(undefined)
-
-  // ref hook to track current state of canvas element
   const canvasRef = useRef(null);
-  // backdrop for canvas
   const backdropImg = new Image()
-  backdropImg.src = backdrop
+  backdropImg.src = wall
 
 // Loads canvas with background image added to context and does not run again
-// Image is set to canvas height and width
-useEffect(() => {
-    // if (!canvasRef.current) return;
+// unless background image, height or width is changed by user
+  useEffect(() => {
     const canvas = canvasRef.current
     const ctx = canvas.getContext('2d');
     backdropImg.onload = (() => {
       ctx.drawImage(backdropImg, 0, 0, backdropImg.width, backdropImg.height, 
                   0, 0, canvas.width, canvas.height);
     })
-  }, [props.height, props.width])
+  }, [props.height, props.width, wall])
+
 
   // activates paint method on mouse down event
   const startPaint = useCallback(evt => {
@@ -40,14 +42,7 @@ useEffect(() => {
       paint()
     }
   }, [])
-//  To use callbacks or not to use callbacks?? That is the question...
-  // function startPaint(evt) {
-  //   const coordinates = getCoords(evt)
-  //   if (coordinates) {
-  //     setmousePosition(coordinates)
-  //     setPainting(true)
-  //   }
-  // }
+
 
   // tracks mouse positions on mouse move event for painting
   const paint = useCallback(evt => {
@@ -91,16 +86,11 @@ useEffect(() => {
 
   // Reset canvas/erase all user work
   function clear() {
-    // const activateClear = string
-    // setClearCanvas(activateClear)
-    if (ClearCanvas) {
       const canvas = canvasRef.current
       const ctx = canvas.getContext('2d');
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(backdropImg, 0, 0, backdropImg.width, backdropImg.height, 
-        0, 0, canvas.width, canvas.height);
-    }
-    // setClearCanvas(undefined)
+        0, 0, canvas.width, canvas.height)
   }
 
   // saves image to a Data URL to download
@@ -124,6 +114,10 @@ useEffect(() => {
     download.dispatchEvent(evt);
   }
 
+  function updateWall(imageId) {
+    setWall(imageId)
+  }
+
 
   return (
     <React.Fragment>
@@ -141,6 +135,8 @@ useEffect(() => {
       </div>
       <ClearCanvas clear={clear} />
       <SaveImage imageSave={imageSave}/>
+      <Backdrop updateWall={updateWall}/>
+
     </React.Fragment>
   )
 }
