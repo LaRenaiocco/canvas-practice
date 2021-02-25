@@ -13,7 +13,7 @@ function Landing(props) {
         <div>Save your graffiti masterpiece!</div>
         <div>Ditch that wall if you mess up.</div> 
         <div>Remember you can't undo paint, but you can always paint over it</div>
-        <div>click here to start painting!</div>
+        <div>click anywhere to start painting!</div>
       </div>
     </div>
   )
