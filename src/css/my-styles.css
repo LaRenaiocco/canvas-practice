@@ -1,5 +1,7 @@
+/* font-family: 'Sedgwick Ave Display', cursive; */
+
 body {
-  font-family: 'Gochi Hand', cursive;
+  font-family: 'Sedgwick Ave Display', cursive;
   background-color: papayawhip;
 }
 
@@ -58,7 +60,7 @@ button {
   left: 0px;
   width: 100%;
   text-align: center;
-  color: white;
+  /* color: white; */
   font-size: 25px;
   z-index: 6000;
 }
