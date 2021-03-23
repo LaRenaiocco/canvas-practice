@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import bluewall from  "./assets/bluewall.jpg"
+import paintsplash from "./assets/paintsplash.png"
 
 function Landing(props) {
 
 
   const welcomeTemplate = (
     <div id="landing" >
-      <img src={bluewall} id="landingimage" />
+      <img src={bluewall} id="landingimage" alt=""  />
       <div id="landingtext">
+        <img src={paintsplash} id="paintsplash" alt="" />
         <div>Welcome to Rosie's Graffiti Gallery</div>
         <div>You can customize your brick wall and size if you choose</div>
         <div>Save your graffiti masterpiece!</div>
