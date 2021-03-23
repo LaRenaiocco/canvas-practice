@@ -2,7 +2,7 @@
 
 body {
   font-family: 'Sedgwick Ave Display', cursive;
-  background-color: papayawhip;
+  background-color: #d9d9d9;
 }
 
 canvas {
@@ -11,7 +11,7 @@ canvas {
 
 button {
   font-family: 'Gochi Hand', cursive;
-  background-color: turquoise;
+  background-color: #03989e;
 }
 
 *:focus {
@@ -136,7 +136,7 @@ button {
   .tooltip .tooltiptext {
     visibility: hidden;
     width: 300px;
-    background-color: lightcoral;
+    background-color: #c3f2f4;
     color: black;
     text-align: center;
     border-radius: 6px;
