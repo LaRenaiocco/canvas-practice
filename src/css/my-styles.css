@@ -10,8 +10,11 @@ canvas {
 }
 
 button {
-  font-family: 'Gochi Hand', cursive;
+  font-family: 'Sedgwick Ave Display', cursive;
   background-color: #03989e;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
 }
 
 *:focus {
@@ -45,12 +48,24 @@ button {
   clear: both;
 }
 
+#landing {
+  text-align: center;
+}
+
 #landingimage {
   width: 100%;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 5000;
+}
+
+#paintsplash {
+  width: 100%;
+  position: absolute;
+  top: 75px;
+  left: 0px;
+  z-index: 6000;
 }
 
 #landingtext {
@@ -62,7 +77,28 @@ button {
   text-align: center;
   /* color: white; */
   font-size: 25px;
-  z-index: 6000;
+  z-index: 7000;
+}
+
+.line {
+  padding: 10px;
+  font-size: 35px;
+}
+
+#line1 {
+  font-size: 50px;
+}
+
+#line2 {
+  transform: rotate(350deg);
+}
+
+#line4link {
+  color:navy;
+}
+
+#line4link:hover {
+  color: dimgray;
 }
 
 .brushsize {
@@ -78,6 +114,7 @@ button {
     border-radius: 12px;
     border: 2px solid black;
     margin: 2px
+    
 }
 
 

@@ -39,7 +39,7 @@ function CanvasSize(props) {
       type="text" 
       id="height" 
       name="height" 
-      placeholder="height"
+      placeholder="height in pixels"
       value={height}
       onChange={handleHeight}
     />
@@ -47,7 +47,7 @@ function CanvasSize(props) {
       type="text" 
       id="width" 
       name="width" 
-      placeholder="width"
+      placeholder="width in pixels"
       value={width}
       onChange={handleWidth}
     />
